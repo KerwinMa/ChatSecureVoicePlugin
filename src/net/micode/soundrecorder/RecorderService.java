@@ -34,6 +34,7 @@ import android.os.PowerManager.WakeLock;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 
+import info.guardianproject.soundrecorder.R;
 import java.io.File;
 import java.io.IOException;
 

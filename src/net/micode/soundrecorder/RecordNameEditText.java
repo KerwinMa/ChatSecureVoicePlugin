@@ -24,6 +24,7 @@ import android.view.KeyEvent;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import info.guardianproject.soundrecorder.R;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

@@ -18,14 +18,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    
+        android:background="#bbeeeeee"
+    >
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dip"
         android:layout_weight="1"
-        android:background="@drawable/background"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+         >
 
         <LinearLayout
             android:id="@+id/time_calculator"
@@ -102,13 +105,6 @@
                     android:focusable="true"
                     android:focusableInTouchMode="true" />
 
-                <net.micode.soundrecorder.RecordNameEditText
-                    android:id="@+id/file_name"
-                    android:layout_width="220dip"
-                    android:layout_height="25dip"
-                    android:background="#00000000"
-                    android:selectAllOnFocus="true"
-                    android:singleLine="true" />
             </LinearLayout>
         </FrameLayout>
 
@@ -166,26 +162,20 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:background="@drawable/background_key" >
+        android:gravity="center" >
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
 
-            <ImageButton
-                android:id="@+id/newButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_new" />
-
+       
             <ImageButton
                 android:id="@+id/finishButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_finish"
-                android:visibility="gone" />
+               />
 
             <ImageButton
                 android:id="@+id/recordButton"

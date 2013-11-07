@@ -21,6 +21,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+import info.guardianproject.soundrecorder.R;
 
 public class SoundRecorderPreferenceActivity extends PreferenceActivity {
     private static final String RECORD_TYPE = "pref_key_record_type";
