@@ -55,7 +55,9 @@ import android.widget.Toast;
 
 import info.guardianproject.soundrecorder.R;
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 
@@ -99,7 +101,7 @@ public class SoundRecorder extends Activity implements Button.OnClickListener,
 
     private static final long SMALL_WHEEL_SPEED_SUPER_FAST = 200;
 
-    private String mRequestedType = AUDIO_ANY;
+    private String mRequestedType = AUDIO_3GPP;
 
     private boolean mCanRequestChanged = false;
 
@@ -136,6 +138,8 @@ public class SoundRecorder extends Activity implements Button.OnClickListener,
 
     private final Handler mHandler = new Handler();
 
+    private File mSoundFile = null;
+    
     private Runnable mUpdateTimer = new Runnable() {
         public void run() {
             if (!mStopUiUpdate) {
@@ -369,6 +373,8 @@ public class SoundRecorder extends Activity implements Button.OnClickListener,
         // for audio which is used for mms, we can only use english file name
         // mShowFinishButon indicates whether this is an audio for mms
        // mFileNameEditText.initFileName(mRecorder.getRecordDir(), extension, mShowFinishButton);
+        mSoundFile = new File(mRecorder.getRecordDir(),"soundtemp." + extension);
+        
     }
 
     private void startRecordPlayingAnimation() {
@@ -482,7 +488,7 @@ public class SoundRecorder extends Activity implements Button.OnClickListener,
         }
     }
 
-    private void startRecording() {
+    private void startRecording() throws IOException {
         mRemainingTimeCalculator.reset();
         if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             mSampleInterrupted = true;
@@ -495,8 +501,9 @@ public class SoundRecorder extends Activity implements Button.OnClickListener,
         } else {
             stopAudioPlayback();
             
-            String outputFileName = "soundtmp";
-
+            resetFileNameEditText();
+            String outputFileName = mSoundFile.getCanonicalPath();
+            
             boolean isHighQuality = SoundRecorderPreferenceActivity.isHighQuality(this);
             if (AUDIO_AMR.equals(mRequestedType)) {
                 mRemainingTimeCalculator.setBitRate(BITRATE_AMR);
@@ -695,7 +702,14 @@ public class SoundRecorder extends Activity implements Button.OnClickListener,
     }
 
     private void showOverwriteConfirmDialogIfConflicts() {
-       startRecording();
+    	try
+    	{
+    		startRecording();
+    	}
+    	catch (IOException ioe)
+    	{
+    		ioe.printStackTrace();
+    	}
      
     }
 

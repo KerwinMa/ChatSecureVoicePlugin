@@ -20,7 +20,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" 
     
-        android:background="#bbeeeeee"
+        android:background="#00000000"
     >
 
     <LinearLayout
